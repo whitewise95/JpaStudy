@@ -1,4 +1,4 @@
-package com.example.jpastudy;
+package com.example.jpastudy.domain;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
