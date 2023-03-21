@@ -23,7 +23,7 @@ public class Member {
 	private String username;
 
 	@Embedded //TODO 공부하기
-	private Address adress;
+	private Address address;
 
 	@OneToMany(mappedBy = "member")
 	private List<Order> orders = new ArrayList<>();

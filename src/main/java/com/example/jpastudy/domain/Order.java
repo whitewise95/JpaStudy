@@ -15,14 +15,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "orders")
 public class Order {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "order_id") //TODO 없을땐 orders_id 로 되는지 확인해보기
 	private Long id;
 
 	@ManyToOne
@@ -32,7 +35,6 @@ public class Order {
 	private List<OrderItem> orderItems = new ArrayList<>();
 
 	@OneToOne
-	@JoinColumn(name = "delivery_id") //TODO 없얻호 맵드바이로 fk 생기는지 확인
 	private Delivery delivery;
 
 	private LocalDateTime orderDate;
