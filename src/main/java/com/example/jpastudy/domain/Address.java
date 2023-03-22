@@ -6,7 +6,6 @@ import lombok.Setter;
 
 @Embeddable  //TODO 공부하기
 @Getter
-@Setter
 public class Address {
 
 	private String city;
