@@ -1,12 +1,10 @@
 package com.example.jpastudy.domain;
 
+import com.example.jpastudy.jpa.base.BaseDomainWithId;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,17 +12,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Member {
+public class Member extends BaseDomainWithId {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-
+	/**
+	 * 아이디
+	 */
 	private String username;
 
-	@Embedded //TODO 공부하기
+	/**
+	 * 주소
+	 */
+	@Embedded
 	private Address address;
 
+	/**
+	 * 구매목록
+	 */
 	@OneToMany(mappedBy = "member")
 	private List<Order> orders = new ArrayList<>();
 }
