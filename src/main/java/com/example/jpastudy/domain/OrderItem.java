@@ -42,9 +42,6 @@ public class OrderItem extends BaseDomainWithId {
 	 */
 	private Integer count;
 
-
-	//TODO 엔티티가 비즈니스 로직을 가지고 객체 지향의 특성을 적극 활용하는 것을 도메인 모델 패턴(http://martinfowler.com/eaaCatalog/domainModel.html)이라 한다.
-	// TODO 엔티티에는 비즈니스 로직이 거의 없고 서비스 계층에서 대부분의 비즈니스 로직을 처리하는 것을 트랜잭션 스크립트 패턴(http://martinfowler.com/eaaCatalog/transactionScript.html)이라 한다
 	// region 생성 메소드
 	public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
 		OrderItem orderItem = new OrderItem();

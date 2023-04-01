@@ -27,7 +27,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "orders")
-@NoArgsConstructor(access = AccessLevel.PROTECTED) //TODO 공부
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends BaseDomainWithId {
 
 	/**
