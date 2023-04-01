@@ -12,9 +12,8 @@ public class MemberRepository {
 	@PersistenceContext
 	private EntityManager em; //TODO @Autowired 로도 가능 하지만 스프링부트가 지원해주기 때문에
 
-	public Long save(Member member) {
+	public void save(Member member) {
 		em.persist(member);
-		return member.getId();
 	}
 
 	public Member findOne(Long id) {
@@ -26,9 +25,8 @@ public class MemberRepository {
 				 .getResultList();
 	}
 
-	public Member findByName(String name) {
+	public List<Member> findByName(String name) {
 		return em.createQuery("SELECT m FROM Member m WHERE m.name = :name", Member.class)
-				 .setParameter("name", name)
-				 .getSingleResult();
+				 .setParameter("name", name).getResultList();
 	}
 }

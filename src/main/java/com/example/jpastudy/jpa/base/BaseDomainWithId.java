@@ -1,7 +1,6 @@
 package com.example.jpastudy.jpa.base;
 
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -11,6 +10,6 @@ import lombok.Getter;
 public class BaseDomainWithId {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	protected Long id;
 }
