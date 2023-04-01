@@ -15,7 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -25,6 +27,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "orders")
+@NoArgsConstructor(access = AccessLevel.PROTECTED) //TODO 공부
 public class Order extends BaseDomainWithId {
 
 	/**

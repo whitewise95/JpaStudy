@@ -1,7 +1,6 @@
 package com.example.jpastudy.repository;
 
 import com.example.jpastudy.domain.Order;
-import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
