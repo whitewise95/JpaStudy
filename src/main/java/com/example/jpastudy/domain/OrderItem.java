@@ -38,4 +38,22 @@ public class OrderItem extends BaseDomainWithId {
 	 * 주문 개수
 	 */
 	private Integer count;
+
+	// region 생성 메소드
+	public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+		OrderItem orderItem = new OrderItem();
+		orderItem.setOrderPrice(orderPrice);
+		orderItem.setItem(item);
+		orderItem.setCount(count);
+
+		item.removeStock(count);
+		return orderItem;
+	}
+	// endregion
+
+	// region 비지니스 로직
+	public void cancel() {
+		getItem().addStock(count);
+	}
+	// endregion
 }
