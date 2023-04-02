@@ -3,14 +3,14 @@ server:
 
 #spring:
 #  datasource:
-#    url: jdbc:h2:mem:test  # TODO 테스트의 yml를  mem:test로 두면 인메모리 DB가 띄어짐 하예 설정이 없어도 같은 설정
+#    url: jdbc:h2:mem:test
 #    username: sa
 #    password:
 #    driver-class-name: org.h2.Driver
 #
 #  jpa:
 #    hibernate:
-#      ddl-auto: create  # TODO 스프링은 create가 아니라 create-drop이 기본설정
+#      ddl-auto: create
 #    properties:
 #      hibernate:
 #        show_sql: true
