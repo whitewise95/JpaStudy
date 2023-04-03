@@ -58,5 +58,9 @@ public class OrderItem extends BaseDomainWithId {
 	public void cancel() {
 		getItem().addStock(count);
 	}
+
+	public int getTotalPrice() {
+		return getOrderPrice() * getCount();
+	}
 	// endregion
 }

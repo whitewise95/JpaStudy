@@ -95,7 +95,7 @@ public class Order extends BaseDomainWithId {
 	 * */
 	public int getTotalPrice(){
 		return orderItems.stream()
-						 .mapToInt(OrderItem::getOrderPrice)
+						 .mapToInt(OrderItem::getTotalPrice)
 						 .sum();
 	}
 	// endregion

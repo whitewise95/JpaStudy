@@ -60,6 +60,7 @@ public abstract class Item extends BaseDomainWithId {
 		if (restStock < 0) {
 			throw new NotEnoughStockException("need more stock");
 		}
+		this.stockQuantity = restStock;
 	}
 	//endregion
 }
