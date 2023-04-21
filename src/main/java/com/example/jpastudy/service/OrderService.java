@@ -5,9 +5,11 @@ import com.example.jpastudy.domain.Item;
 import com.example.jpastudy.domain.Member;
 import com.example.jpastudy.domain.Order;
 import com.example.jpastudy.domain.OrderItem;
+import com.example.jpastudy.enums.DeliveryStatus;
 import com.example.jpastudy.repository.ItemRepository;
 import com.example.jpastudy.repository.MemberRepository;
 import com.example.jpastudy.repository.OrderRepository;
+import com.example.jpastudy.repository.OrderSearch;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,6 +39,7 @@ public class OrderService {
 		// region 배송정보 생성
 		Delivery delivery = new Delivery();
 		delivery.setAddress(member.getAddress());
+		delivery.setStatus(DeliveryStatus.READY);
 		// endregion
 
 		// region 주문상품 생성
@@ -62,7 +65,7 @@ public class OrderService {
 	/**
 	 *	검색
 	 * */
-	// public List<Order> findOrders(OrderSearch orderSearch){
-	// 	return orderRepository.findAll(orderSearch);
-	// }
+	public List<Order> findOrders(OrderSearch orderSearch) {
+		return orderRepository.findAllByString(orderSearch);
+	}
 }

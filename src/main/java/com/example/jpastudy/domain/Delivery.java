@@ -2,6 +2,7 @@ package com.example.jpastudy.domain;
 
 import com.example.jpastudy.enums.DeliveryStatus;
 import com.example.jpastudy.jpa.base.BaseDomainWithId;
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,7 +19,7 @@ public class Delivery extends BaseDomainWithId {
 	/**
 	 * 주문정보
 	 */
-	@OneToOne(mappedBy = "delivery")
+	@OneToOne(mappedBy = "delivery", orphanRemoval = true, cascade = CascadeType.ALL)
 	private Order order;
 
 	/**

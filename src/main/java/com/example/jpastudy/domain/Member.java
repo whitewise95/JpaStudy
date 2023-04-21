@@ -38,6 +38,6 @@ public class Member extends BaseDomainWithId {
 	/**
 	 * 구매목록
 	 */
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", orphanRemoval = true)
 	private List<Order> orders = new ArrayList<>();
 }

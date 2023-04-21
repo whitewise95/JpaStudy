@@ -1,6 +1,7 @@
 package com.example.jpastudy.domain;
 
 import com.example.jpastudy.jpa.base.BaseDomainWithId;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -22,13 +23,13 @@ public class OrderItem extends BaseDomainWithId {
 	/**
 	 * 구매한 상품 정보
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Item item;
 
 	/**
 	 * 주문정보
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id")
 	private Order order;
 

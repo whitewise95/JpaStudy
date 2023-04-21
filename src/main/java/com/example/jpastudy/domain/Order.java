@@ -7,6 +7,7 @@ import com.example.jpastudy.jpa.base.BaseDomainWithId;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -33,19 +34,19 @@ public class Order extends BaseDomainWithId {
 	/**
 	 * 구매 회원
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Member member;
 
 	/**
 	 * 구매 상품 목록
 	 */
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "order", orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems = new ArrayList<>();
 
 	/**
 	 * 배송정보
 	 */
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
 	private Delivery delivery;
 
 	/**
@@ -59,14 +60,19 @@ public class Order extends BaseDomainWithId {
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 
-	//region 생성 메소드
+	public void addOrderItem(OrderItem orderItem) {
+		orderItems.add(orderItem);
+		orderItem.setOrder(this);
+	}
 
+
+	//region 생성 메소드
 	public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
 		Order order = new Order();
 		order.setMember(member);
 		order.setDelivery(delivery);
 		for (OrderItem item : orderItems) {
-			order.getOrderItems().add(item);
+			order.addOrderItem(item);
 		}
 		order.setStatus(OrderStatus.ORDER);
 		order.setOrderDate(LocalDateTime.now());
